@@ -96,13 +96,13 @@ if (!isset($_SESSION['id'])) {
                                                         <td class="desc">' . $row['department_id'] . '</td>
                                                         <td>' . $row['account_type'] . '</td>
                                                         <td>
-                                                            <span class="status--process">';
+                                                            ';
                                                         if ($row['active'] == 1) {
-                                                            echo 'Active';
+                                                            echo '<span style="color:green">Active</span>';
                                                         } else {
-                                                            echo 'Not Active';
+                                                            echo '<span style="color:red">Not Active</span>';
                                                         }
-                                                        echo '</span>
+                                                        echo '
                                                         </td>
                                                        
                                                         <td> |
@@ -117,6 +117,7 @@ if (!isset($_SESSION['id'])) {
                                                     echo "SQL ERROR";
                                                 }
                                                 ?>
+
 
 
                                             <!-- <td>Lori Lynch</td>
