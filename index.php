@@ -47,7 +47,7 @@ include_once './templates/head.php'
                         </div>
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
-                                <a href="#">
+                                <a href="profile.php">
                                     <div class="card text-white bg-primary m-3" style="max-width: 18rem;">
                                         <div class="card-body">
                                             <div class="icon mx-5">
@@ -109,7 +109,7 @@ include_once './templates/head.php'
                             </div>
 
                             <div class="col-md-3 col-sm-6">
-                                <a href="#">
+                                <a href="edit_user.php">
                                     <div class="card text-white bg-warning m-3" style="max-width: 18rem;">
                                         <div class="card-body">
                                             <div class="icon mx-5">

@@ -40,21 +40,8 @@ if (!isset($_SESSION['id'])) {
                 <!-- MAIN CONTENT-->
                 <div class="main-content">
                     <div class="container-fluid">
-                        <?php
 
-                            $sql = "SELECT * FROM users WHERE id=" . $_SESSION['id'] . ";";
-                            $result = mysqli_query($conn, $sql);
-                            $resultCheck = mysqli_num_rows($result);
-                            if ($resultCheck > 0) {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo $row['id'] . "<br>";
-                                    echo $row['username'] . "<br>";
-                                    echo $row['email'];
-                                }
-                            } else {
-                                //code
-                            }
-                            ?>
+                        // code
 
                     </div>
                 </div>
