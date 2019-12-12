@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CoolAdmin Bootstrap 4.1 Admin Dashboard Template
 **CoolAdmin** is a responsive Bootstrap 4.1 admin template. It provides you with a collection of ready to use code snippets and utilities, custom pages, loads of charts, 4 different dashboard variations, a collection of applications and some useful widgets. Preview of this awesome admin template available here: https://colorlib.com/polygon/cooladmin/index.html
 
@@ -55,3 +56,7 @@ Initial Release
 ### License
 
 CoolAdmin is licensed under The MIT License (MIT). Which means that you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the final products. But you always need to state that Colorlib is the original author of this template.
+=======
+# GECP_Admin_Panel
+admin panel of gecp website
+>>>>>>> 6c06b7fbb73e0c659d34bac2a1c13d518c4fe49d
