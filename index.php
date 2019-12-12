@@ -148,9 +148,7 @@ include_once './templates/head.php'
                             </div>
 
                         </div>
-                        <a href="admin/">admin</a><br>
-                        <a href="hod/index.php">hod</a><br>
-                        <a href="faculty/index.php">faculty</a><br>
+                        <a href="upload.php">Upload file</a><br>
                         <a href="login.php">Login</a><br>
                         <a href="signup.php">Signup Page</a><br>
 
