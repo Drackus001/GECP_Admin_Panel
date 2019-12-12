@@ -71,7 +71,7 @@ include_once './templates/head.php'
                                 </a>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <a href="#">
+                                <a href="college_info.php">
                                     <div class="card text-white bg-info m-3" style="max-width: 18rem;">
                                         <div class="card-body">
                                             <div class="icon mx-4">

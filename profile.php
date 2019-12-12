@@ -1,7 +1,6 @@
 <!-- <html> -->
 <?php
 include_once './templates/head.php';
-include_once './includes/dbh.inc.php';
 ?>
 </head>
 <!-- </head> -->

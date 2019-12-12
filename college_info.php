@@ -1,6 +1,7 @@
 <!-- <html> -->
 <?php
 include_once './templates/head.php';
+
 ?>
 </head>
 <!-- </head> -->
@@ -40,7 +41,7 @@ if (!isset($_SESSION['id'])) {
                 <div class="main-content">
                     <div class="container-fluid">
 
-                        // code
+                        <h2>College Info</h2>
 
                     </div>
                 </div>
