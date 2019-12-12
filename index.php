@@ -122,7 +122,7 @@ include_once './templates/head.php'
                             </div>
 
                             <div class="col-md-3 col-sm-6">
-                                <a href="#">
+                                <a href="delete_user.php">
                                     <div class="card text-white bg-danger m-3" style="max-width: 18rem;">
                                         <div class="card-body">
                                             <div class="icon mx-5">
