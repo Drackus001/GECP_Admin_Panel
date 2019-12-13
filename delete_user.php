@@ -94,13 +94,14 @@ if (!isset($_SESSION['id'])) {
                                                         } else {
                                                             echo '<span style="color:red">Not Active</span>';
                                                         }
+                                                        $id = $row['id'];
                                                         echo '
                                                         </td>
                                                        
                                                         <td> |
                                                         
-                                                        <a href="#"><button class="btn btn-warning">Deactivate</button></a> &nbsp;&nbsp;
-                                                        <a href="#"><button class="btn btn-danger">Delete</button></a> &nbsp;|                                                                                                                                                                                   
+                                                        <a href="./includes/deactivate.inc.php?deact=' . $id . '"><button class="btn btn-warning">Deactivate</button></a> &nbsp;&nbsp;
+                                                        <a href="./includes/delete.inc.php?del=' . $id . '"><button class="btn btn-danger">Delete</button></a> &nbsp;|                                                                                                                                                                                   
                                                         </td>
                                                         </tr>
                                                         <tr class="spacer"></tr>';
