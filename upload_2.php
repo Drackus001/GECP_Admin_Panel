@@ -34,7 +34,6 @@ if (isset($_POST['submit']) && isset($_SESSION['id'])) {
 
                 if ($result) {
                     echo 'profile_path updated';
-                    exit();
                 } else {
                     echo 'updatation failed!!';
                 }

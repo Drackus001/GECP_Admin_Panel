@@ -148,6 +148,7 @@ include_once './templates/head.php'
                             </div>
 
                         </div>
+                        <a href="active_req.php">Account Active Request</a> <br>
                         <a href="upload.php">Upload file</a><br>
                         <a href="login.php">Login</a><br>
                         <a href="signup.php">Signup Page</a><br>

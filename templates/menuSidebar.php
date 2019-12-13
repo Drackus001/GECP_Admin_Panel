@@ -14,7 +14,11 @@
 
                     while ($row = mysqli_fetch_assoc($result)) {
                         //code
-                        echo '<img src="' . $row['profile_path'] . '"height="100" width="100"  alt="College logo" />';
+                        if ($row['profile_path'] == '') {
+                            echo '<img src="images/icon/logo.png" alt="College logo" />';
+                        } else {
+                            echo '<img src="' . $row['profile_path'] . '"height="100" width="100"  alt="Collegelogo_2" />';
+                        }
                     }
                 } else {
                     echo 'SQL ERROR';
@@ -23,7 +27,7 @@
 
                 echo '<span style="font-size: 30px">' . $_SESSION['username'] . '</span>';
             } else {
-                echo '<img src="images/icon/logo.png" alt="College logo" />';
+                // echo '<img src="images/icon/logo.png" alt="College logo" />';
                 echo '<span style="font-size: 30px">Unknown </span>';
             }
 
