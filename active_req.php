@@ -105,7 +105,7 @@ if (!isset($_SESSION['id'])) {
                                                         </td>
                                                        
                                                         <td> |
-                                                        <a href="#"><button class="btn btn-success">Activate</button></a> &nbsp; &nbsp;
+                                                        <a href="./includes/activate.inc.php?act=' . $id . '"><button class="btn btn-success">Activate</button></a> &nbsp; &nbsp;
                                                         
                                                         <a href="./includes/delete.inc.php?del=' . $id . '" ><button class="btn btn-danger">Delete</button></a> &nbsp;|                                                                                                                                                                                   
                                                         </td>
