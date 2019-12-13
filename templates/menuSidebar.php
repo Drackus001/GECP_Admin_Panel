@@ -15,9 +15,9 @@
                     while ($row = mysqli_fetch_assoc($result)) {
                         //code
                         if ($row['profile_path'] == '') {
-                            echo '<img src="images/icon/logo.png" alt="College logo" />';
+                            echo '<img src="images/icon/logo.png" alt="Profile_photo" />';
                         } else {
-                            echo '<img src="' . $row['profile_path'] . '"height="100" width="100"  alt="Collegelogo_2" />';
+                            echo '<img src="' . $row['profile_path'] . '"height="100" width="100"  alt="profile_photo" />';
                         }
                     }
                 } else {
