@@ -1,11 +1,29 @@
+<?php
+// include './includes/dbh.inc.php';
+?>
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
         <a href="#">
-            <img src="images/icon/logo.png" alt="College logo" />
+            <!-- <img src="images/icon/logo.png" alt="College logo" /> -->
             <?php
             if (isset($_SESSION['username'])) {
+                $sql = "SELECT profile_path from users where id=" . $_SESSION['id'] . ";";
+                $result = mysqli_query($conn, $sql);
+                $resultCheck = mysqli_num_rows($result);
+                if ($resultCheck > 0 && $resultCheck == 1) {
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        //code
+                        echo '<img src="' . $row['profile_path'] . '"height="100" width="100"  alt="College logo" />';
+                    }
+                } else {
+                    echo 'SQL ERROR';
+                }
+
+
                 echo '<span style="font-size: 30px">' . $_SESSION['username'] . '</span>';
             } else {
+                echo '<img src="images/icon/logo.png" alt="College logo" />';
                 echo '<span style="font-size: 30px">Unknown </span>';
             }
 
@@ -16,6 +34,7 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
+
                 <li class="active has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>

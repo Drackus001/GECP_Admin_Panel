@@ -1,3 +1,7 @@
+<?php
+session_start();
+include './includes/dbh.inc.php';
+?>
 <html lang="en">
 
 <head>
@@ -8,11 +12,20 @@
 </head>
 
 <body>
-    <h2>FILE UPLOAD</h2>
-    <form action="upload_2.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <input type="submit" value="submit" name="submit" />
-    </form>
+    <?php
+    if (!isset($_SESSION['username'])) {
+        echo "<p>you're logged out</p>";
+    } else { ?>
+
+        <h2>UPDATE PROFILE IMAGE</h2>
+        <hr>
+        <br>
+        <form action="upload_2.php" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="submit" name="submit" />
+        </form>
+    <?php } ?>
+
 </body>
 
 </html>

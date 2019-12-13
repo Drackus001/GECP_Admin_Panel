@@ -51,7 +51,8 @@ if (!isset($_SESSION['id'])) {
                                     echo $row['email'];
                                 }
                             } else {
-                                //code
+                                echo 'SQL ERROR';
+                                // code
                             }
                             ?>
 
