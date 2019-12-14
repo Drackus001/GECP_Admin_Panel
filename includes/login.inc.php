@@ -30,6 +30,7 @@ if (isset($_POST['login-submit'])) {
                 session_start();
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['type'] = $row['account_type'];
 
                 header('Location: ../index.php?login=success');
                 exit();

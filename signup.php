@@ -56,11 +56,7 @@ include_once './templates/head.php'
                                     <label>Confirm Password</label>
                                     <input class="au-input au-input--full" type="password" name="confirm_password" placeholder="Confirm Password">
                                 </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="aggree">Agree the terms and policy
-                                    </label>
-                                </div>
+
                                 <button name="signup-submit" class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
 
                             </form>

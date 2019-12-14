@@ -39,7 +39,15 @@ include_once './templates/head.php'
                             if (!isset($_SESSION['username'])) {
                                 echo "<p>you're logged out</p>";
                             } else {
-                                echo "<p>you're logged in</p>";
+                                if ($_SESSION['type'] == 'ADMIN') {
+                                    echo "<p>you're logged in as ADMIN</p>";
+                                } else if ($_SESSION['type'] == 'HOD') {
+                                    echo "<p>you're logged in as HOD</p>";
+                                } else if ($_SESSION['type'] == 'FACULTY') {
+                                    echo "<p>you're logged in as FACULTY</p>";
+                                } else {
+                                    echo "<p>Account_type is not defined</p>";
+                                }
                             }
                             ?>
 
