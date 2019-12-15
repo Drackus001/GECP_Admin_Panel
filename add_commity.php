@@ -74,7 +74,7 @@ if (!isset($_SESSION['id'])) {
                                                 </div>
                                             </div>
                                             <?php
-                                                $sql = "SELECT * FROM users WHERE account_type!='HOD';";
+                                                $sql = "SELECT * FROM users WHERE account_type!='ADMIN';";
 
                                                 $result = mysqli_query($conn, $sql);
                                                 $resultCheck = mysqli_num_rows($result);

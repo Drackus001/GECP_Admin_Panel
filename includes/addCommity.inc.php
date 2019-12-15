@@ -9,10 +9,9 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['type'] == 'A
     $objectives = $_POST['objectives'];
     $faculty_id = $_POST['faculty_id'];
 
-
     $file = $_FILES['file'];
     print_r($file);
-    // // Array ( [name] => helo.png [type] => image/png [tmp_name] => /opt/lampp/temp/phpo5hgP2 [error] => 0 [size] => 583011 )
+    // // Array ( [name] => helo.pdf [type] => application/pdf [tmp_name] => /opt/lampp/temp/phpo5hgP2 [error] => 0 [size] => 583011 )
 
     $fileName = $_FILES['file']['name'];
     $fileTmpName = $_FILES['file']['tmp_name'];
