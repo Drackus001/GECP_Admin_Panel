@@ -156,7 +156,8 @@ include_once './templates/head.php'
                             </div>
 
                         </div>
-                        <a href="add_commity.php">Add Commities</a> <br>
+                        <a href="addLab.php">Add Lab</a> <br>
+                        <a href="addCommity.php">Add Commities</a> <br>
                         <a href="active_req.php">Account Active Request</a> <br>
                         <a href="upload.php">Upload file</a><br>
                         <a href="login.php">Login</a><br>

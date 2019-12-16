@@ -1,13 +1,18 @@
 <?php
 session_start();
 include 'dbh.inc.php';
-// INSERT INTO `commities`(`name`, `description`, `objectives`, `pdf_path`, `faculty_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5]);
+// INSERT INTO `labs`(`id`, `name`, `description`, `os`, `ram`, `hdd`, `processor`, `photo_path`, `department_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9]);
 
-if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['type'] == 'ADMIN') {
+if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == 'ADMIN' || $_SESSION['type'] = 'HOD')) {
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $objectives = $_POST['objectives'];
-    $faculty_id = $_POST['faculty_id'];
+    $os = $_POST['os'];
+    $ram = $_POST['ram'];
+    $hdd = $_POST['hdd'];
+    $processor = $_POST['processor'];
+    $department_id = $_POST['department_id'];
+
+
 
     $file = $_FILES['file'];
     print_r($file);
@@ -26,26 +31,38 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['type'] == 'A
     #$fileName = $fileExt[0];
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('zip', 'pdf', 'ppt', 'pptx', 'doc', 'docx');
+    $allowed = array('png', 'jpg', 'jpeg');
+
+    // $allowed = array('zip', 'pdf', 'ppt', 'pptx', 'doc', 'docx');
 
     if ($fileName == '') {
         $fileDestination = NULL;
-        if ($objectives == '') {
-            $objectives = NULL;
+        if ($department_id == 0) {
+            $department_id = NULL;
         }
-        if ($faculty_id == 0) {
-            $faculty_id = NULL;
+        if ($os == '') {
+            $os = NULL;
         }
+        if ($ram == '') {
+            $ram = NULL;
+        }
+        if ($hdd == '') {
+            $hdd = NULL;
+        }
+        if ($processor == '') {
+            $processor = NULL;
+        }
+
         #SQL code
-        $sql = "INSERT INTO commities (name, description, objectives, pdf_path, faculty_id) VALUES(?, ?, ?, ?, ?);";
+        $sql = "INSERT INTO labs(name, description, os, ram, hdd, processor, photo_path, department_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../addCommity.php?error=sqlerror");
+            header("Location: ../addLab.php?error=sqlerror");
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "ssssi", $name, $description, $objectives, $fileDestination, $faculty_id);
+            mysqli_stmt_bind_param($stmt, "sssssssi", $name, $description, $os, $ram, $hdd, $processor, $fileDestination, $department_id);
             mysqli_stmt_execute($stmt);
-            header('Location: ../index.php?commityAdded');
+            header('Location: ../index.php?labAdded');
         }
     } else {
 
@@ -55,27 +72,42 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['type'] == 'A
                 if ($fileSize < 5120000) { // 5mb
                     $fileName = $fileExt[0];
                     $fileNameNew = $fileName . "." . $fileActualExt;
-                    $fileDestination = '../uploads/commities/' . $fileNameNew;
-                    $fileDestination_final = 'uploads/commities/' . $fileNameNew;
-                    if ($faculty_id == 0) {
-                        $faculty_id = NULL;
+                    $fileDestination = '../uploads/labs/' . $fileNameNew;
+                    $fileDestination_final = 'uploads/labs/' . $fileNameNew;
+                    if ($department_id == 0) {
+                        $department_id = NULL;
                     }
-                    if ($objectives == '') {
-                        $objectives = NULL;
+                    if ($os == '') {
+                        $os = NULL;
+                    }
+                    if ($ram == '') {
+                        $ram = NULL;
+                    }
+                    if ($hdd == '') {
+                        $hdd = NULL;
+                    }
+                    if ($processor == '') {
+                        $processor = NULL;
                     }
 
                     #SQL CODE
-                    $sql = "INSERT INTO commities (name, description, objectives, pdf_path, faculty_id) VALUES(?, ?, ?, ?, ?);";
+                    $sql = "INSERT INTO labs(name, description, os, ram, hdd, processor, photo_path, department_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
                     $stmt = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
-                        header("Location: ../addCommity.php?error=sqlerror");
+                        header("Location: ../addLab.php?error=sqlerror");
                         exit();
                     } else {
-                        mysqli_stmt_bind_param($stmt, "ssssi", $name, $description, $objectives, $fileDestination_final, $faculty_id);
+                        mysqli_stmt_bind_param($stmt, "sssssssi", $name, $description, $os, $ram, $hdd, $processor, $fileDestination_final, $department_id);
                         mysqli_stmt_execute($stmt);
                         // mysqli_stmt_store_result($stmt);
                         // header("Location: ../index.php?commityAdded");
                         // exit();
+                        if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                            header('Location: ../index.php?labAdded');
+                            exit();
+                        } else {
+                            echo 'something weng wrong!!!!!';
+                        }
                     }
 
 
@@ -98,12 +130,7 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['type'] == 'A
                     //     echo 'SQL ERROR';
                     // }
 
-                    if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                        header('Location: ../index.php?commityAdded');
-                        exit();
-                    } else {
-                        echo 'something weng wrong!!!!!';
-                    }
+
                 } else {
                     echo 'max 5mb file size is allowed.';
                 }

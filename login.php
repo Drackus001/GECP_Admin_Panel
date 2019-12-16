@@ -33,9 +33,9 @@ include_once './templates/head.php'
 
                                 </div>
                                 <div class="login-checkbox">
-                                    <label>
+                                    <!-- <label>
                                         <input type="checkbox" name="remember">Remember Me
-                                    </label>
+                                    </label> -->
                                     <label>
                                         <a href="#">Forgotten Password?</a>
                                     </label>
