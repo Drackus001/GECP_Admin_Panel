@@ -20,7 +20,7 @@ include './includes/dbh.inc.php';
         <h2>UPDATE PROFILE IMAGE</h2>
         <hr>
         <br>
-        <form action="upload_2.php" method="POST" enctype="multipart/form-data">
+        <form action="./includes/prof_upload.inc.php" method="POST" enctype="multipart/form-data">
             <input type="file" name="file">
             <input type="submit" value="submit" name="submit" />
         </form>
