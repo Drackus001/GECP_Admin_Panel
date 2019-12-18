@@ -3,33 +3,56 @@
 ?>
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
-        <a href="#">
+        <a href="index.php">
             <!-- <img src="images/icon/logo.png" alt="College logo" /> -->
+
+
+            <span>
+                <img src="images/icon/logo.png" alt="College_photo" /> GECP (USER PANEL)
+            </span>
+            <!-- 
+                <?php
+                // if (!isset($_SESSION['username'])) {
+                //     echo "<p>Unknown</p>";
+                // } else {
+                //     if ($_SESSION['type'] == 'ADMIN') {
+                //         echo "<strong> ADMIN ACCOUNT</strong>";
+                //     } else if ($_SESSION['type'] == 'HOD') {
+                //         echo "<strong>HOD ACCOUNT</strong>";
+                //     } else if ($_SESSION['type'] == 'FACULTY') {
+                //         echo "<strong> FACULTY ACCOUNT</strong>";
+                //     } else {
+                //         echo "<p>Account_type is not defined</p>";
+                //     }
+                // }
+                // 
+                ?> -->
+
             <?php
-            if (isset($_SESSION['username'])) {
-                $sql = "SELECT profile_path from users where id=" . $_SESSION['id'] . ";";
-                $result = mysqli_query($conn, $sql);
-                $resultCheck = mysqli_num_rows($result);
-                if ($resultCheck > 0 && $resultCheck == 1) {
+            // if (isset($_SESSION['username'])) {
+            // $sql = "SELECT profile_path from users where id=" . $_SESSION['id'] . ";";
+            // $result = mysqli_query($conn, $sql);
+            // $resultCheck = mysqli_num_rows($result);
+            // if ($resultCheck > 0 && $resultCheck == 1) {
 
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        //code
-                        if ($row['profile_path'] == '') {
-                            echo '<img src="images/icon/logo.png" alt="Profile_photo" />';
-                        } else {
-                            echo '<img src="' . $row['profile_path'] . '"height="100" width="100"  alt="profile_photo" />';
-                        }
-                    }
-                } else {
-                    echo 'SQL ERROR';
-                }
+            // while ($row = mysqli_fetch_assoc($result)) {
+            // //code
+            // if ($row['profile_path'] == '') {
+            // echo '<img src="images/icon/logo.png" alt="Profile_photo" />';
+            // } else {
+            // echo '<img src="' . $row['profile_path'] . '" height="100" width="100" alt="profile_photo" />';
+            // }
+            // }
+            // } else {
+            // echo 'SQL ERROR';
+            // }
 
 
-                echo '<span style="font-size: 30px">' . $_SESSION['username'] . '</span>';
-            } else {
-                // echo '<img src="images/icon/logo.png" alt="College logo" />';
-                echo '<span style="font-size: 30px">Unknown </span>';
-            }
+            // echo '<span style="font-size: 30px">' . $_SESSION['username'] . '</span>';
+            // } else {
+            // // echo '<img src="images/icon/logo.png" alt="College logo" />';
+            // echo '<span style="font-size: 30px">Unknown </span>';
+            // }
 
             ?>
 

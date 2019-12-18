@@ -2,14 +2,25 @@
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="header-wrap">
-                <form class="form-header" action="" method="POST">
-                    <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                    <button class="au-btn--submit" type="submit">
-                        <i class="zmdi zmdi-search"></i>
-                    </button>
-                </form>
+                <h2>
+                    <?php
+                    if (!isset($_SESSION['username'])) {
+                        echo "<p>Unknown</p>";
+                    } else {
+                        if ($_SESSION['type'] == 'ADMIN') {
+                            echo "<strong> ~~ADMIN ACCOUNT~~</strong>";
+                        } else if ($_SESSION['type'] == 'HOD') {
+                            echo "<strong>~~HOD ACCOUNT~~</strong>";
+                        } else if ($_SESSION['type'] == 'FACULTY') {
+                            echo "<strong> ~~FACULTY ACCOUNT~~</strong>";
+                        } else {
+                            echo "<p>Account_type is not defined</p>";
+                        }
+                    }
+                    ?>
+                </h2>
                 <div class="header-button">
-                    <div class="noti-wrap">
+                    <!-- <div class="noti-wrap">
                         <div class="noti__item js-item-menu">
                             <i class="zmdi zmdi-comment-more"></i>
                             <span class="quantity">1</span>
@@ -120,12 +131,67 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="account-wrap">
+                    </div> -->
+
+                    <!-- <img src="images/icon/avatar-01.jpg" alt="John Doe" /> -->
+
+                    <!-- $name =  $row['prefix'] . " " . $row['first_name'] .  " " . $row['middle_name'] . " " . $row['last_name'] . "  (" . $row['department_id'] . ")"; -->
+
+                    <div class="account-wrap ml-auto">
                         <div class="account-item clearfix js-item-menu">
+
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                <?php
+                                if (isset($_SESSION['username'])) {
+                                    $sql = "SELECT * from users where id=" . $_SESSION['id'] . ";";
+                                    $result = mysqli_query($conn, $sql);
+                                    $resultCheck = mysqli_num_rows($result);
+                                    if ($resultCheck > 0 && $resultCheck == 1) {
+
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            //code
+                                            $name =  $row['prefix'] . " " . $row['first_name'] .  " "  . $row['last_name'];
+                                            if ($row['profile_path'] == '') {
+                                                echo '<img src="images/icon/logo.png" alt="Profile_photo" />';
+                                            } else {
+                                                echo '<img src="' . $row['profile_path'] . '" alt="profile_photo" />';
+                                            }
+                                            ?>
+
                             </div>
+                            <div class="content">
+                                <a class="js-acc-btn" href="#"><?php echo $name; ?></a>
+                            </div>
+                            <div class="account-dropdown js-dropdown">
+                                <div class="info clearfix">
+                                    <div class="image">
+                                        <a href="#">
+                                            <?php echo '<img src="' . $row['profile_path'] . '" alt="' . $name . '" />'; ?>
+
+                                            <!-- <img src="images/icon/avatar-01.jpg" alt=<?php echo $name; ?> /> -->
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="name">
+                                            <a href="#"><?php echo $name; ?></a>
+                                        </h5>
+                                        <span class="email"><?php echo $row['username']; ?></span>
+                                    </div>
+                                </div>
+
+
+                    <?php
+
+                            }
+                        } else {
+                            echo 'SQL ERROR';
+                        }
+                    } else {
+                        //
+                    }
+
+                    ?>
+                    <!-- </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">john doe</a>
                             </div>
@@ -142,25 +208,25 @@
                                         </h5>
                                         <span class="email">johndoe@example.com</span>
                                     </div>
-                                </div>
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-account"></i>Account</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-settings"></i>Setting</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                    </div>
-                                </div>
-                                <div class="account-dropdown__footer">
-                                    <a href="#">
-                                        <i class="zmdi zmdi-power"></i>Logout</a>
-                                </div>
+                                </div> -->
+                    <div class="account-dropdown__body">
+                        <div class="account-dropdown__item">
+                            <a href="#">
+                                <i class="zmdi zmdi-account"></i>Profile</a>
+                        </div>
+                        <div class="account-dropdown__item">
+                            <a href="#">
+                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                        </div>
+                        <div class="account-dropdown__item">
+                            <a href="#">
+                                <i class="zmdi zmdi-money-box"></i>Billing</a>
+                        </div>
+                    </div>
+                    <div class="account-dropdown__footer">
+                        <a href="#">
+                            <i class="zmdi zmdi-power"></i>Logout</a>
+                    </div>
                             </div>
                         </div>
                     </div>

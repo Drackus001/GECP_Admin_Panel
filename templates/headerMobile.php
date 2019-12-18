@@ -3,7 +3,11 @@
         <div class="container-fluid">
             <div class="header-mobile-inner">
                 <a class="logo" href="index.php">
-                    <img src="images/icon/logo.png" alt="CoolAdmin" />
+
+                    <span>
+                        <h3><img src="images/icon/logo.png" alt="College_photo" /> Government Engineering College, Patan. (USER PANEL)</h3>
+                    </span>
+
                 </a>
                 <button class="hamburger hamburger--slider" type="button">
                     <span class="hamburger-box">
