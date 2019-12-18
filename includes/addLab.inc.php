@@ -111,7 +111,7 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == '
                     }
 
 
-                    // $sql = "INSERT INTO commities (name, description, objectives, pdf_path, faculty_id) VALUES ($name, $description, $objectives, $fileDestination, $faculty_id);";
+                    // $sql = "INSERT INTO commities (name, description, objectives, pdf_path, user_id) VALUES ($name, $description, $objectives, $fileDestination, $user_id);";
                     // $result = mysqli_query($conn, $sql);
 
                     // if ($result) {

@@ -1,13 +1,13 @@
 <?php
 session_start();
 include 'dbh.inc.php';
-// INSERT INTO `commities`(`name`, `description`, `objectives`, `pdf_path`, `faculty_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5]);
+// INSERT INTO `commities`(`name`, `description`, `objectives`, `pdf_path`, `user_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5]);
 
 if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['type'] == 'ADMIN') {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $objectives = $_POST['objectives'];
-    $faculty_id = $_POST['faculty_id'];
+    $user_id = $_POST['user_id'];
 
     $file = $_FILES['file'];
     print_r($file);
@@ -33,17 +33,17 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['type'] == 'A
         if ($objectives == '') {
             $objectives = NULL;
         }
-        if ($faculty_id == 0) {
-            $faculty_id = NULL;
+        if ($user_id == 0) {
+            $user_id = NULL;
         }
         #SQL code
-        $sql = "INSERT INTO commities (name, description, objectives, pdf_path, faculty_id) VALUES(?, ?, ?, ?, ?);";
+        $sql = "INSERT INTO commities (name, description, objectives, pdf_path, user_id) VALUES(?, ?, ?, ?, ?);";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("Location: ../addCommity.php?error=sqlerror");
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "ssssi", $name, $description, $objectives, $fileDestination, $faculty_id);
+            mysqli_stmt_bind_param($stmt, "ssssi", $name, $description, $objectives, $fileDestination, $user_id);
             mysqli_stmt_execute($stmt);
             header('Location: ../index.php?commityAdded');
         }
@@ -57,21 +57,21 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['type'] == 'A
                     $fileNameNew = $fileName . "." . $fileActualExt;
                     $fileDestination = '../uploads/commities/' . $fileNameNew;
                     $fileDestination_final = 'uploads/commities/' . $fileNameNew;
-                    if ($faculty_id == 0) {
-                        $faculty_id = NULL;
+                    if ($user_id == 0) {
+                        $user_id = NULL;
                     }
                     if ($objectives == '') {
                         $objectives = NULL;
                     }
 
                     #SQL CODE
-                    $sql = "INSERT INTO commities (name, description, objectives, pdf_path, faculty_id) VALUES(?, ?, ?, ?, ?);";
+                    $sql = "INSERT INTO commities (name, description, objectives, pdf_path, user_id) VALUES(?, ?, ?, ?, ?);";
                     $stmt = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
                         header("Location: ../addCommity.php?error=sqlerror");
                         exit();
                     } else {
-                        mysqli_stmt_bind_param($stmt, "ssssi", $name, $description, $objectives, $fileDestination_final, $faculty_id);
+                        mysqli_stmt_bind_param($stmt, "ssssi", $name, $description, $objectives, $fileDestination_final, $user_id);
                         mysqli_stmt_execute($stmt);
                         // mysqli_stmt_store_result($stmt);
                         // header("Location: ../index.php?commityAdded");
@@ -79,7 +79,7 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['type'] == 'A
                     }
 
 
-                    // $sql = "INSERT INTO commities (name, description, objectives, pdf_path, faculty_id) VALUES ($name, $description, $objectives, $fileDestination, $faculty_id);";
+                    // $sql = "INSERT INTO commities (name, description, objectives, pdf_path, user_id) VALUES ($name, $description, $objectives, $fileDestination, $user_id);";
                     // $result = mysqli_query($conn, $sql);
 
                     // if ($result) {

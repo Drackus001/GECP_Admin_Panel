@@ -85,7 +85,7 @@ if (!isset($_SESSION['id'])) {
                                                         <label for="select" class=" form-control-label">Faculty Co-ordinator</label>
                                                     </div>
                                                 <div class="col-12 col-md-9">
-                                                    <select name="faculty_id" id="select" class="form-control">
+                                                    <select name="user_id" id="select" class="form-control">
                                                         <option value="0">please select</option>
                                             ';
                                                     while ($row = mysqli_fetch_assoc($result)) {
