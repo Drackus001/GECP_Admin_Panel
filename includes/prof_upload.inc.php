@@ -25,7 +25,7 @@ if (isset($_POST['submit']) && isset($_SESSION['id'])) {
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError == 0) {
             if ($fileSize < 5120000) { // 5mb
-                $fileNameNew = $_SESSION['id'] . "." . $fileActualExt;
+                $fileNameNew = uniqid() . "." . $fileActualExt;
                 $fileDestination = '../uploads/profile/' . $fileNameNew;
                 $fileDestination_final = 'uploads/profile/' . $fileNameNew;
 

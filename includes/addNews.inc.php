@@ -1,15 +1,12 @@
 <?php
 session_start();
 include 'dbh.inc.php';
-// INSERT INTO `labs`(`id`, `name`, `description`, `os`, `ram`, `hdd`, `processor`, `photo_path`, `department_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9]);
+// INSERT INTO news(name, date_of_creation, path, department_id, user_id) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6]);
 
-if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == 'ADMIN' || $_SESSION['type'] = 'HOD')) {
+if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == 'FACULTY' || $_SESSION['type'] = 'HOD')) {
     $name = $_POST['name'];
-    $description = $_POST['description'];
-    $os = $_POST['os'];
-    $ram = $_POST['ram'];
-    $hdd = $_POST['hdd'];
-    $processor = $_POST['processor'];
+    $user_id = $_SESSION['id'];
+    $date = date("Y-m-d");
     $department_id = $_POST['department_id'];
 
 
@@ -31,7 +28,7 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == '
     #$fileName = $fileExt[0];
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('png', 'jpg', 'jpeg');
+    $allowed = array('png', 'jpg', 'jpeg', 'pdf', 'zip', 'rar', 'doc', 'docx');
 
     // $allowed = array('zip', 'pdf', 'ppt', 'pptx', 'doc', 'docx');
 
@@ -40,29 +37,20 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == '
         if ($department_id == 0) {
             $department_id = NULL;
         }
-        if ($os == '') {
-            $os = NULL;
-        }
-        if ($ram == '') {
-            $ram = NULL;
-        }
-        if ($hdd == '') {
-            $hdd = NULL;
-        }
-        if ($processor == '') {
-            $processor = NULL;
-        }
 
+
+        // INSERT INTO news(name, date_of_creation, path, department_id, user_id) VALUES (?, ?, ?, ?, ?);
         #SQL code
-        $sql = "INSERT INTO labs(name, description, os, ram, hdd, processor, photo_path, department_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        $sql = "INSERT INTO news(name, date_of_creation, path, department_id, user_id) VALUES (?, ?, ?, ?, ?);";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../addLab.php?error=sqlerror");
+            header("Location: ../addNews.php?error=sqlerror");
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "sssssssi", $name, $description, $os, $ram, $hdd, $processor, $fileDestination, $department_id);
+            mysqli_stmt_bind_param($stmt, "sssss", $name, $date, $fileDestination, $department_id, $user_id);
             mysqli_stmt_execute($stmt);
-            header('Location: ../index.php?labAdded');
+            header('Location: ../index.php?success=newsAdded');
+            exit();
         }
     } else {
 
@@ -70,40 +58,29 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == '
         if (in_array($fileActualExt, $allowed)) {
             if ($fileError == 0) {
                 if ($fileSize < 5120000) { // 5mb
-                    // $fileName = $fileExt[0];
-                    $fileNameNew = uniqid() . "." . $fileActualExt;
-                    $fileDestination = '../uploads/labs/' . $fileNameNew;
-                    $fileDestination_final = 'uploads/labs/' . $fileNameNew;
+                    $fileName = $fileExt[0];
+                    $fileNameNew = uniqid()  . "." . $fileActualExt;
+                    $fileDestination = '../uploads/news/' . $fileNameNew;
+                    $fileDestination_final = 'uploads/news/' . $fileNameNew;
                     if ($department_id == 0) {
                         $department_id = NULL;
                     }
-                    if ($os == '') {
-                        $os = NULL;
-                    }
-                    if ($ram == '') {
-                        $ram = NULL;
-                    }
-                    if ($hdd == '') {
-                        $hdd = NULL;
-                    }
-                    if ($processor == '') {
-                        $processor = NULL;
-                    }
 
+                    // INSERT INTO news(name, date_of_creation, path, department_id, user_id) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6]);
                     #SQL CODE
-                    $sql = "INSERT INTO labs(name, description, os, ram, hdd, processor, photo_path, department_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                    $sql = "INSERT INTO news(name, date_of_creation, path, department_id, user_id) VALUES (?, ?, ?, ?, ?);";
                     $stmt = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
-                        header("Location: ../addLab.php?error=sqlerror");
+                        header("Location: ../addNews.php?error=sqlerror");
                         exit();
                     } else {
-                        mysqli_stmt_bind_param($stmt, "sssssssi", $name, $description, $os, $ram, $hdd, $processor, $fileDestination_final, $department_id);
+                        mysqli_stmt_bind_param($stmt, "sssss", $name, $date, $fileDestination_final, $department_id, $user_id);
                         mysqli_stmt_execute($stmt);
                         // mysqli_stmt_store_result($stmt);
-                        // header("Location: ../index.php?commityAdded");
+                        // header("Location: ../index.php?success=newsAdded");
                         // exit();
                         if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                            header('Location: ../index.php?labAdded');
+                            header('Location: ../index.php?success=newsAdded');
                             exit();
                         } else {
                             echo 'something weng wrong!!!!!';

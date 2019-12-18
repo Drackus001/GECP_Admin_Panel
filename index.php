@@ -158,6 +158,7 @@ include_once './templates/head.php'
                         </div>
                         <a href="addLab.php">Add Lab</a> <br>
                         <a href="addCommity.php">Add Commities</a> <br>
+                        <a href="addNews.php">Add News</a> <br>
                         <a href="active_req.php">Account Active Request</a> <br>
                         <a href="prof_upload.php">Change profile photo</a><br>
                         <a href="login.php">Login</a><br>
