@@ -43,8 +43,8 @@ if (!isset($_SESSION['id'])) {
                         <hr>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
+                                <div class="table-responsive table--no-card">
+                                    <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
                                                 <th>Sr_no.</th>
@@ -72,7 +72,7 @@ if (!isset($_SESSION['id'])) {
                                                         <td><b>' . $no++ . '.</b>
                                                         
                                                         </td>
-                                                        <td>' . $row['username'] . '</td><td>';
+                                                        <td><span class="block-email">' . $row['username'] . '</span></td><td>';
 
                                                         if ($row['first_name'] == '' and $row['last_name'] == '') {
                                                             echo 'Not define';

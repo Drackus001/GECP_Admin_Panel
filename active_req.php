@@ -56,8 +56,8 @@ if (!isset($_SESSION['id'])) {
                                     $result = mysqli_query($conn, $sql);
                                     $resultCheck = mysqli_num_rows($result);
                                     if ($resultCheck > 0) {
-                                        echo '     <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
+                                        echo '     <div class="table-responsive table--no-card m-b-30">
+                                    <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
                                                 <th>Sr_no.</th>
@@ -77,7 +77,7 @@ if (!isset($_SESSION['id'])) {
                                                         <td><b>' . $no++ . '.</b>
                                                         
                                                         </td>
-                                                        <td>' . $row['username'] . '</td><td>';
+                                                        <td><span class="block-email">' . $row['username'] . '</span></td><td>';
 
                                             if ($row['first_name'] == '' and $row['last_name'] == '') {
                                                 echo 'Not define';

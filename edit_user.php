@@ -51,8 +51,8 @@ if (!isset($_SESSION['id'])) {
                                                 <i class="zmdi zmdi-plus"></i>add user</button></a>
                                     </div>
                                 </div>
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="table table-data2">
+                                <div class="table-responsive table--no-card m-b-30">
+                                    <table class="table table-borderless table-striped table-earning">
                                         <thead>
                                             <tr>
                                                 <th>Sr_no.</th>
