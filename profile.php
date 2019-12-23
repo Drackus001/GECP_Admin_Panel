@@ -291,13 +291,14 @@ if (!isset($_SESSION['id'])) {
 
                                             echo '</td>     
                                                         <td> |        
-                                                        <a href="./includes/delete.inc.php?del=' . $id . '" ><button class="btn btn-danger">Delete</button></a> &nbsp;|                                                                                                                                                                                   
+                                                        <a href="./includes/delete.inc.php?exp_del=' . $id . '" ><button class="btn btn-danger">Delete</button></a> &nbsp;|                                                                                                                                                                                   
                                                         </td>
                                                         </tr>
-                                                        </tbody>
-                                </table>
-                            </div>';
+                                                      ';
                                         }
+                                        echo '  </tbody>
+                                        </table>
+                                    </div>';
                                     } else {
                                         echo '<p style="color: red;">No Request Found!</p>';
                                     }
@@ -357,13 +358,13 @@ if (!isset($_SESSION['id'])) {
 
                                             echo '</td>     
                                                         <td> |        
-                                                        <a href="./includes/delete.inc.php?del=' . $id . '" ><button class="btn btn-danger">Delete</button></a> &nbsp;|                                                                                                                                                                                   
+                                                        <a href="./includes/delete.inc.php?edu_del=' . $id . '" ><button class="btn btn-danger">Delete</button></a> &nbsp;|                                                                                                                                                                                   
                                                         </td>
-                                                        </tr>
-                                                        </tbody>
-                                </table>
-                            </div>';
+                                                        </tr>';
                                         }
+                                        echo '  </tbody>
+                                        </table>
+                                    </div>';
                                     } else {
                                         echo '<p style="color: red;">No Request Found!</p>';
                                     }
@@ -419,12 +420,13 @@ if (!isset($_SESSION['id'])) {
 
                                             echo '</td>     
                                                         <td> |        
-                                                        <a href="./includes/delete.inc.php?del=' . $id . '" ><button class="btn btn-danger">Delete</button></a> &nbsp;|                                                                                                                                                                                   
+                                                        <a href="./includes/delete.inc.php?pub_del=' . $id . '" ><button class="btn btn-danger">Delete</button></a> &nbsp;|                                                                                                                                                                                   
                                                         </td>
-                                                        </tr></tbody>
-                                                        </table>
-                                                    </div>';
+                                                        </tr>';
                                         }
+                                        echo '  </tbody>
+                                        </table>
+                                    </div>';
                                     } else {
                                         echo '<p style="color: red;">No Request Found!</p>';
                                     }

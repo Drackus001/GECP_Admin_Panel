@@ -37,7 +37,6 @@ if (isset($_SESSION['id'])) {
             exit();
         } else {
             echo mysqli_stmt_error($stmt);
-            echo mysqli_error;
         }
         // mysqli_stmt_store_result($stmt);
 
