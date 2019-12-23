@@ -39,7 +39,7 @@ if (!isset($_SESSION['id'])) {
                 <!-- MAIN CONTENT-->
                 <div class="main-content">
                     <div class="container-fluid">
-                        <h2>Personal Info.</h2>
+                        <h2 class="btn-info">Personal Info.</h2>
                         <hr>
                         <?php
 
@@ -243,7 +243,7 @@ if (!isset($_SESSION['id'])) {
                             ?>
                         <br><br>
 
-                        <h2>Experience Info.</h2>
+                        <h2 class="btn-danger">Experience Info.</h2>
                         <hr>
                         <div class="row">
                             <div class="col-md-12">
@@ -312,7 +312,7 @@ if (!isset($_SESSION['id'])) {
                         <div class="row">
                             <div class="col-md-12">
 
-                                <h2>Education Info.</h2>
+                                <h2 class="btn-info">Education Info.</h2>
                                 <hr>
 
                                 <a href="addEducation.php" class="btn btn-success">Add Education <strong>+</strong></a>
@@ -376,7 +376,7 @@ if (!isset($_SESSION['id'])) {
                         <br><br>
                         <div class="row">
                             <div class="col-md-12">
-                                <h2>Publication Info.</h2>
+                                <h2 class="btn-danger">Publication Info.</h2>
                                 <hr>
 
                                 <a href="addPublication.php" class="btn btn-success">Add Publication <strong>+</strong> </a>

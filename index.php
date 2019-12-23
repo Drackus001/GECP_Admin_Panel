@@ -155,7 +155,9 @@ include_once './templates/head.php'
                                 </a>
                             </div>
 
+
                         </div>
+                        <a href="departments.php">Departments</a> <br>
                         <a href="addExperience.php">Add Experience</a> <br>
                         <a href="addEducation.php">Add Education</a> <br>
                         <a href="addPublication.php">Add Publication</a> <br>
