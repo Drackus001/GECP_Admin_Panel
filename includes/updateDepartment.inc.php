@@ -15,7 +15,6 @@ if (isset($_SESSION['id'])) {
     $peo = $_POST['peo'];
     $pso = $_POST['pso'];
 
-
     $user_id = $_SESSION['id'];
 
     $sql = "UPDATE departments SET about=?,vision=?,mission=?,peo=?,pso=? WHERE id=?;";
