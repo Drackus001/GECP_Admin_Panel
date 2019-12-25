@@ -14,9 +14,9 @@ if (isset($_SESSION['id'])) {
     $vision = $_POST['vision'];
     $peo = $_POST['peo'];
     $pso = $_POST['pso'];
-
+// temp
     $user_id = $_SESSION['id'];
-
+    
     $sql = "UPDATE departments SET about=?,vision=?,mission=?,peo=?,pso=? WHERE id=?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
