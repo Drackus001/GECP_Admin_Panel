@@ -47,6 +47,22 @@ if (isset($_GET['del']) && isset($_SESSION['id'])) {
     header('Location: ../profile.php?educationRecordDeleted');
     mysqli_close($conn);
     exit();
+} else if (isset($_GET['dept_del']) && isset($_SESSION['id'])) {
+    require 'dbh.inc.php';
+
+    $id = $_GET['dept_del'];
+    // echo $id . '<br>';
+    $sql = "DELETE FROM departments WHERE id='$id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        echo 'Deleted department success.';
+    } else {
+        echo 'SQL ERROR';
+        exit();
+    }
+    header('Location: ../departments.php?departmentDeleted');
+    mysqli_close($conn);
+    exit();
 } else if (isset($_GET['pub_del']) && isset($_SESSION['id'])) {
     require 'dbh.inc.php';
 

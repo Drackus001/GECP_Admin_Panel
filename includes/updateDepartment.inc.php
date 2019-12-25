@@ -14,9 +14,9 @@ if (isset($_SESSION['id'])) {
     $vision = $_POST['vision'];
     $peo = $_POST['peo'];
     $pso = $_POST['pso'];
-// temp
+    // temp
     $user_id = $_SESSION['id'];
-    
+
     $sql = "UPDATE departments SET about=?,vision=?,mission=?,peo=?,pso=? WHERE id=?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -26,9 +26,11 @@ if (isset($_SESSION['id'])) {
         mysqli_stmt_bind_param($stmt, "sssssi", $about, $vision, $mission, $peo, $pso, $id);
         if (mysqli_stmt_execute($stmt)) {
             header("Location: ../index.php?success=departmentUpdated");
+            mysqli_close($conn);
             exit();
         } else {
             echo mysqli_stmt_error($stmt);
+            mysqli_close($conn);
         }
         // mysqli_stmt_store_result($stmt);
 
