@@ -79,6 +79,22 @@ if (isset($_GET['del']) && isset($_SESSION['id'])) {
     header('Location: ../profile.php?publicationRecordDeleted');
     mysqli_close($conn);
     exit();
+} else if (isset($_GET['news_del']) && isset($_SESSION['id'])) {
+    require 'dbh.inc.php';
+
+    $id = $_GET['news_del'];
+    // echo $id . '<br>';
+    $sql = "DELETE FROM news WHERE id='$id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        echo 'Deleted news successfull.';
+    } else {
+        echo 'SQL ERROR';
+        exit();
+    }
+    header('Location: ../news.php?newsDeleted');
+    mysqli_close($conn);
+    exit();
 } else {
     header('Location: ../index.php');
 }
