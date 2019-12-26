@@ -21,7 +21,7 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] = 'H
         exit();
     } else {
 
-        mysqli_stmt_bind_param($stmt, "ssss", $name, $description, $date, $user_id);
+        mysqli_stmt_bind_param($stmt, "sssi", $name, $description, $date, $user_id);
         mysqli_stmt_execute($stmt);
         // mysqli_stmt_store_result($stmt);
         header("Location: ../index.php?success=publicationAdded");
