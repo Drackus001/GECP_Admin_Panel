@@ -67,69 +67,73 @@ include './templates/head.php'
                                 </a>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <a href="#">
+                                <a href="news.php">
                                     <div class="card text-white bg-success m-3" style="max-width: 18rem;">
                                         <div class="card-body">
                                             <div class="icon mx-5">
                                                 <i class="fas fa-plus-square fa-10x"></i>
                                             </div>
-                                            <h3 class="card-title mt-3 mx-5">Add user</h3>
+                                            <h3 class="card-title mt-3 mx-5">News</h3>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="col-md-3 col-sm-6">
-                                <a href="college_info.php">
+                                <a href="departments.php">
                                     <div class="card text-white bg-info m-3" style="max-width: 18rem;">
                                         <div class="card-body">
                                             <div class="icon mx-4">
                                                 <i class="fas fa-home fa-10x"></i>
+                                            </div>
+                                            <h3 class="card-title mt-3 mx-4">Departments</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <a href="labs.php">
+                                    <div class="card text-white bg-warning m-3" style="max-width: 18rem;">
+                                        <div class="card-body">
+                                            <div class="icon mx-5">
+                                                <i class="fas fa-refresh fa-10x"></i>
+                                            </div>
+                                            <h3 class="card-title mt-3 mx-3">Labs</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <a href="commities.php">
+                                    <div class="card text-white bg-info m-3" style="max-width: 18rem;">
+                                        <div class="card-body">
+                                            <div class="icon mx-5">
+                                                <i class="fas fa-edit fa-10x"></i>
+                                            </div>
+                                            <h3 class="card-title mt-3 mx-5">Commities</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6">
+                                <a href="college_info.php">
+                                    <div class="card text-white bg-warning m-3" style="max-width: 18rem;">
+                                        <div class="card-body">
+                                            <div class="icon mx-5">
+                                                <i class="fas fa-wrench fa-10x"></i>
                                             </div>
                                             <h3 class="card-title mt-3 mx-5">College Info</h3>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-md-3 col-sm-6">
-                                <a href="#">
-                                    <div class="card text-white bg-warning m-3" style="max-width: 18rem;">
-                                        <div class="card-body">
-                                            <div class="icon mx-5">
-                                                <i class="fas fa-refresh fa-8x"></i>
-                                            </div>
-                                            <h3 class="card-title mt-3 mx-5">Password Recovery</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
 
-                            <div class="col-md-3 col-sm-6">
-                                <a href="changePassword.php">
-                                    <div class="card text-white bg-info m-3" style="max-width: 18rem;">
-                                        <div class="card-body">
-                                            <div class="icon mx-5">
-                                                <i class="fas fa-edit fa-8x"></i>
-                                            </div>
-                                            <h3 class="card-title mt-3 mx-5">Change Password</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
 
-                            <div class="col-md-3 col-sm-6">
-                                <a href="edit_user.php">
-                                    <div class="card text-white bg-warning m-3" style="max-width: 18rem;">
-                                        <div class="card-body">
-                                            <div class="icon mx-5">
-                                                <i class="fas fa-wrench fa-10x"></i>
-                                            </div>
-                                            <h3 class="card-title mt-3 mx-5">Edit user</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-md-3 col-sm-6">
+                            
+                            <?php
+                            if($_SESSION['type'] == 'ADMIN' || $_SESSION['type']=='HOD'){
+                                echo '<div class="col-md-3 col-sm-6">
                                 <a href="delete_user.php">
                                     <div class="card text-white bg-danger m-3" style="max-width: 18rem;">
                                         <div class="card-body">
@@ -140,8 +144,25 @@ include './templates/head.php'
                                         </div>
                                     </div>
                                 </a>
-                            </div>
-
+                            </div>' ;
+                            }
+                            else{
+                                $id = $_SESSION['id'];
+                                echo '<div class="col-md-3 col-sm-6">
+                                <a href="./includes/deactivate.inc.php?deact=' . $id . '">
+                                    <div class="card text-white bg-danger m-3" style="max-width: 18rem;">
+                                        <div class="card-body">
+                                            <div class="icon mx-5">
+                                                <i class="fa fa-trash fa-10x"></i>
+                                            </div>
+                                            <h3 class="card-title mt-3 mx-5">Deactivate</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>' ;
+                            }
+                            ?>
+                            
                             <div class="col-md-3 col-sm-6">
                                 <a href="./includes/logout.inc.php">
                                     <div class="card text-white bg-primary m-3" style="max-width: 18rem;">
@@ -154,7 +175,7 @@ include './templates/head.php'
                                     </div>
                                 </a>
                             </div>
-
+                            
 
                         </div>
                         <a href="commities.php">Commities</a> <br>

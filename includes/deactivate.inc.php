@@ -13,7 +13,15 @@ if (isset($_GET['deact']) && isset($_SESSION['id'])) {
         echo 'SQL ERROR';
         exit();
     }
-    header('Location: ../delete_user.php?userDe-activated');
+
+    if($_SESSION['id']==$id){
+        header('Location: logout.inc.php');
+    }
+    else{
+        header('Location: ../delete_user.php?userDe-activated');
+    }
+
+    
     mysqli_close($conn);
 } else {
     header('Location: ../index.php?error');

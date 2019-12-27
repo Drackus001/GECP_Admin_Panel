@@ -163,21 +163,23 @@
                                 <a class="js-acc-btn" href="#"><?php echo $name; ?></a>
                             </div>
                             <div class="account-dropdown js-dropdown">
+                                <a href="profile.php">
                                 <div class="info clearfix">
                                     <div class="image">
-                                        <a href="#">
+                                        <!-- <a href="profile.php"> -->
                                             <?php echo '<img src="' . $row['profile_path'] . '" alt="' . $name . '" />'; ?>
 
                                             <!-- <img src="images/icon/avatar-01.jpg" alt=<?php echo $name; ?> /> -->
-                                        </a>
+                                        <!-- </a> -->
                                     </div>
                                     <div class="content">
                                         <h5 class="name">
-                                            <a href="#"><?php echo $name; ?></a>
+                                            <?php echo $name; ?>
                                         </h5>
                                         <span class="email"><?php echo $row['username']; ?></span>
                                     </div>
                                 </div>
+                                </a>
 
 
                     <?php

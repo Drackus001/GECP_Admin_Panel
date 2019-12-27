@@ -20,84 +20,49 @@
     <nav class="navbar-mobile">
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
-                <li class="has-sub">
-                    <a class="js-arrow" href="index.php">
+            <li class="active has-sub">
+                <a class="js-arrow" href="index.php">
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                   
                 </li>
                 <li>
-                    <a href="chart.php">
-                        <i class="fas fa-chart-bar"></i>Charts</a>
+                    <a href="profile.php">
+                        <i class="fas fa-user"></i>Profile</a>
                 </li>
                 <li>
-                    <a href="table.php">
-                        <i class="fas fa-table"></i>Tables</a>
+                    <a href="changePassword.php">
+                        <i class="fas fa-edit"></i>Change Password</a>
                 </li>
+                <?php
+              if($_SESSION['type'] == 'ADMIN' || $_SESSION['type']=='HOD'){
+                echo '<li>
+                <a href="signup.php">
+                    <i class="fas fa-plus-square"></i>Add user</a>
+            </li>
+            <li>
+                <a href="edit_user.php">
+                    <i class="fas fa-wrench"></i>Edit User</a>
+            </li>
+            <li>
+                <a href="active_req.php">
+                    <i class="fas fa-home"></i>Active Account Request</a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-refresh"></i>Password Recovery</a>
+            </li>
+            <li>
+                <a href="delete_user.php">
+                    <i class="fas fa-trash"></i>Delete User</a>
+            </li>';
+              }
+              else{
+                
+            
+              }
+               ?>
                 <li>
-                    <a href="form.php">
-                        <i class="far fa-check-square"></i>Forms</a>
-                </li>
-                <li>
-                    <a href="calendar.php">
-                        <i class="fas fa-calendar-alt"></i>Calendar</a>
-                </li>
-                <li>
-                    <a href="map.php">
-                        <i class="fas fa-map-marker-alt"></i>Maps</a>
-                </li>
-                <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-copy"></i>Pages</a>
-                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                        <li>
-                            <a href="login.php">Login</a>
-                        </li>
-                        <li>
-                            <a href="signup.php">Register</a>
-                        </li>
-                        <li>
-                            <a href="forget-pass.php">Forget Password</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-desktop"></i>UI Elements</a>
-                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                        <li>
-                            <a href="button.php">Button</a>
-                        </li>
-                        <li>
-                            <a href="badge.php">Badges</a>
-                        </li>
-                        <li>
-                            <a href="tab.php">Tabs</a>
-                        </li>
-                        <li>
-                            <a href="card.php">Cards</a>
-                        </li>
-                        <li>
-                            <a href="alert.php">Alerts</a>
-                        </li>
-                        <li>
-                            <a href="progress-bar.php">Progress Bars</a>
-                        </li>
-                        <li>
-                            <a href="modal.php">Modals</a>
-                        </li>
-                        <li>
-                            <a href="switch.php">Switchs</a>
-                        </li>
-                        <li>
-                            <a href="grid.php">Grids</a>
-                        </li>
-                        <li>
-                            <a href="fontawesome.php">Fontawesome Icon</a>
-                        </li>
-                        <li>
-                            <a href="typo.php">Typography</a>
-                        </li>
-                    </ul>
+                    <a href="./includes/logout.inc.php">
+                        <i class="fas fa-share-square"></i>Logout</a>
                 </li>
             </ul>
         </div>
