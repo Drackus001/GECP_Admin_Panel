@@ -157,6 +157,8 @@ include './templates/head.php'
 
 
                         </div>
+                        <a href="commities.php">Commities</a> <br>
+                        <a href="labs.php">Labs</a> <br>
                         <a href="news.php">News</a> <br>
                         <a href="departments.php">Departments</a> <br>
                         <a href="addExperience.php">Add Experience</a> <br>

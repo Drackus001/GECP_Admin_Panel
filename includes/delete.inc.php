@@ -95,6 +95,39 @@ if (isset($_GET['del']) && isset($_SESSION['id'])) {
     header('Location: ../news.php?newsDeleted');
     mysqli_close($conn);
     exit();
+}else if (isset($_GET['lab_del']) && isset($_SESSION['id'])) {
+    require 'dbh.inc.php';
+
+    $id = $_GET['lab_del'];
+    // echo $id . '<br>';
+    $sql = "DELETE FROM labs WHERE id='$id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        echo 'Deleted Lab successfull.';
+    } else {
+        echo 'SQL ERROR';
+        exit();
+    }
+    header('Location: ../labs.php?labsDeleted');
+    mysqli_close($conn);
+    exit();
+}
+else if (isset($_GET['commity_del']) && isset($_SESSION['id'])) {
+    require 'dbh.inc.php';
+
+    $id = $_GET['commity_del'];
+    // echo $id . '<br>';
+    $sql = "DELETE FROM commities WHERE id='$id'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        echo 'Commity deleted successfull.';
+    } else {
+        echo 'SQL ERROR';
+        exit();
+    }
+    header('Location: ../commities.php?commityDeleted');
+    mysqli_close($conn);
+    exit();
 } else {
     header('Location: ../index.php');
 }

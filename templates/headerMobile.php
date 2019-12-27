@@ -21,22 +21,9 @@
         <div class="container-fluid">
             <ul class="navbar-mobile__list list-unstyled">
                 <li class="has-sub">
-                    <a class="js-arrow" href="#">
+                    <a class="js-arrow" href="index.php">
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                        <li>
-                            <a href="index.php">Dashboard 1</a>
-                        </li>
-                        <li>
-                            <a href="index2.php">Dashboard 2</a>
-                        </li>
-                        <li>
-                            <a href="index3.php">Dashboard 3</a>
-                        </li>
-                        <li>
-                            <a href="index4.php">Dashboard 4</a>
-                        </li>
-                    </ul>
+                   
                 </li>
                 <li>
                     <a href="chart.php">
