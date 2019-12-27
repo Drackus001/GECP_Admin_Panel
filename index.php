@@ -1,6 +1,6 @@
 <!-- <html> -->
 <?php
-include_once './templates/head.php'
+include './templates/head.php'
 ?>
 </head>
 <!-- </head> -->
@@ -10,7 +10,7 @@ include_once './templates/head.php'
 
         <!-- HEADER MOBILE-->
         <?php
-        include_once './templates/headerMobile.php'
+        include './templates/headerMobile.php'
         ?>
         <!-- END HEADER MOBILE-->
 
@@ -143,7 +143,7 @@ include_once './templates/head.php'
                             </div>
 
                             <div class="col-md-3 col-sm-6">
-                                <a href="#">
+                                <a href="./includes/logout.inc.php">
                                     <div class="card text-white bg-primary m-3" style="max-width: 18rem;">
                                         <div class="card-body">
                                             <div class="icon mx-5">

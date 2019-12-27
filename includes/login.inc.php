@@ -31,6 +31,7 @@ if (isset($_POST['login-submit'])) {
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['type'] = $row['account_type'];
+                $_SESSION['active'] = $row['active'];
 
                 header('Location: ../index.php?login=success');
                 exit();

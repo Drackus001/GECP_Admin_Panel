@@ -151,7 +151,7 @@
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             //code
                                             $name =  $row['prefix'] . " " . $row['first_name'] .  " "  . $row['last_name'];
-                                            if ($row['profile_path'] == '') {
+                                            if ($row['profile_path'] == NULL) {
                                                 echo '<img src="images/icon/logo.png" alt="Profile_photo" />';
                                             } else {
                                                 echo '<img src="' . $row['profile_path'] . '" alt="profile_photo" />';
@@ -211,20 +211,16 @@
                                 </div> -->
                     <div class="account-dropdown__body">
                         <div class="account-dropdown__item">
-                            <a href="#">
+                            <a href="profile.php">
                                 <i class="zmdi zmdi-account"></i>Profile</a>
                         </div>
                         <div class="account-dropdown__item">
-                            <a href="#">
-                                <i class="zmdi zmdi-settings"></i>Setting</a>
-                        </div>
-                        <div class="account-dropdown__item">
-                            <a href="#">
-                                <i class="zmdi zmdi-money-box"></i>Billing</a>
+                            <a href="changePassword.php">
+                                <i class="zmdi zmdi-edit"></i>Change Password</a>
                         </div>
                     </div>
                     <div class="account-dropdown__footer">
-                        <a href="#">
+                        <a href="./includes/logout.inc.php">
                             <i class="zmdi zmdi-power"></i>Logout</a>
                     </div>
                             </div>
