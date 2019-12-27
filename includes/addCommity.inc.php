@@ -3,7 +3,7 @@ session_start();
 include 'dbh.inc.php';
 // INSERT INTO `commities`(`name`, `description`, `objectives`, `pdf_path`, `user_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5]);
 
-if (isset($_POST['submit']) && isset($_SESSION['id']) ) {
+if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['active'] == 1 ) {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $objectives = $_POST['objectives'];
@@ -115,6 +115,6 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) ) {
         }
     }
 } else {
-    header('Location: ../index.php');
+    header('Location: ../login.php?error=logout');
     exit();
 }

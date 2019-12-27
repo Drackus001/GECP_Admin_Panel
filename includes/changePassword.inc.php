@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_POST['submit']) && isset($_SESSION['id'])) {
+if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['active'] == 1) {
 
     require 'dbh.inc.php';
 
@@ -75,6 +75,6 @@ if (isset($_POST['submit']) && isset($_SESSION['id'])) {
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 } else {
-    header('Location: ../login.php');
+    header('Location: ../login.php?error=logout');
     exit();
 }

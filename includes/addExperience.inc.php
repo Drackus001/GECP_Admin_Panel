@@ -2,37 +2,41 @@
 session_start();
 require 'dbh.inc.php';
 // INSERT INTO experience(designation, user_id, institute_name, joining_date, leaving_date) VALUES (?, ?, ?, ?, ?);
-if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] = 'HOD' || $_SESSION['type' == 'FACULTY'])) {
+if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['active'] == 1){ // && ($_SESSION['type'] = 'HOD' || $_SESSION['type' == 'FACULTY'])) {
 
 
 
     $designation = $_POST['designation'];
     $institute_name = $_POST['institute_name'];
     $user_id = $_SESSION['id'];
+    
     // $date = $_POST['date'];
     // $date = date("Y-m-d");
 
     $joining_date = date("Y-m-d", strtotime($_POST['joining_date']));
     $leaving_date = date("Y-m-d", strtotime($_POST['leaving_date']));
+    echo $_POST['joining_date'].'<br>';
+    echo $leaving_date;
+    exit();
 
     $sql = "INSERT INTO experience(designation, user_id, institute_name, joining_date, leaving_date) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../index.php?error=sqlerror");
+        header("Location: ../profile.php?error=sqlerror");
         exit();
     } else {
 
         mysqli_stmt_bind_param($stmt, "sisss", $designation, $user_id, $institute_name, $joining_date, $leaving_date);
         mysqli_stmt_execute($stmt);
         // mysqli_stmt_store_result($stmt);
-        header("Location: ../index.php?success=experienceAdded");
+        header("Location: ../profile.php?success=experienceAdded");
         exit();
     }
     // closing connection...
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 } else {
-    header('Location: ../login.php');
+    header('Location: ../login.php?error=logout');
     exit();
 }
     

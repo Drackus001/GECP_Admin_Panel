@@ -3,7 +3,7 @@ session_start();
 include 'dbh.inc.php';
 // INSERT INTO news(name, date_of_creation, path, department_id, user_id) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6]);
 
-if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == 'FACULTY' || $_SESSION['type'] = 'HOD')) {
+if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['active'] == 1){//&& ($_SESSION['type'] == 'FACULTY' || $_SESSION['type'] = 'HOD')) {
     $name = $_POST['name'];
     $user_id = $_SESSION['id'];
     $date = date("Y-m-d");
@@ -119,6 +119,6 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == '
         }
     }
 } else {
-    header('Location: ../index.php');
+    header('Location: ../login.php?error=logout');
     exit();
 }

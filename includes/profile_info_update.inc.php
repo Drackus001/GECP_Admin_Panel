@@ -3,7 +3,7 @@ session_start();
 
 // UPDATE users SET prefix='$prefix',first_name='$first_name',middle_name='$middle_name',last_name='$last_name',qualification='$qualification',area_of_interest='$area_of_interest',designation='$designation',email='$email',dob='$dob',mobile_no='$mobile_no',address_line_1='$address_line_1',address_line_2='$address_line_2',city='$city',pincode='$pincode'" WHERE id=1;
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) && $_SESSION['active'] == 1) {
     require 'dbh.inc.php';
 
     // $username = $_POST['username'];
@@ -56,5 +56,6 @@ if (isset($_SESSION['id'])) {
     // header('Location: ../profile.php?profileUpdated');
     // mysqli_close($conn);
 } else {
-    header('Location: ../profile.php?error');
+    header('Location: ../login.php?error=logout');
+    exit();
 }

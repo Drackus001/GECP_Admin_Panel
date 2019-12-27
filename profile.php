@@ -432,6 +432,12 @@ if (!isset($_SESSION['id'])) {
                                     }
                                     ?>
 
+                                    <!-- START COPYRIGHT -->
+                                    <?php
+                                    include './templates/copyright.php'
+                                    ?>
+                                    <!-- END COPYRIGHT -->
+
                             </div>
                         </div>
                     </div>

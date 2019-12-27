@@ -19,13 +19,56 @@ include_once './templates/head.php'
                             <form action="includes/signup.inc.php" method="post">
 
                                 <h2>REGISTER | PAGE</h2><br>
+                                <?php
+                                if(isset($_GET['error'])){
+                                    $error_code = $_GET['error'];
+                                    if($error_code == 'emptyfields'){
+                                        $error = 'Please fill in all fields.';
+                                    }elseif($error_code == 'password_mismatch'){
+                                        $error = 'Password is not matched.';
+                                    }elseif($error_code == 'sqlerror'){
+                                        $error = 'Database error.';
+                                    }
+                                    elseif($error_code == 'usertaken'){
+                                        $error = 'This username is already taken.';
+                                    }
+                                    echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                        '.$error.'
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>';
+                                }
+                                ?>
+                                <!-- Message alert -->
+                            <!-- <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
+								<span class="badge badge-pill badge-primary">Success</span>
+								    You successfully read this important alert.
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								    <span aria-hidden="true">&times;</span>
+								</button>
+						    </div> -->
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                    <?php if(isset($_GET['username'])){
+                                        $uname=$_GET['username'];
+                                        echo '<input class="au-input au-input--full" type="text" name="username" placeholder="Username" value="'.$uname.'">';
+                                    }else{
+                                        echo '<input class="au-input au-input--full" type="text" name="username" placeholder="Username">';
+                                    }
+                                     ?>
+                                    <!-- <input class="au-input au-input--full" type="text" name="username" placeholder="Username"> -->
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    <?php if(isset($_GET['email'])){
+                                        $email=$_GET['email'];
+                                        echo '<input class="au-input au-input--full" type="email" name="email" placeholder="Email" value="'.$email.'">';
+                                    }else{
+                                        echo '<input class="au-input au-input--full" type="email" name="email" placeholder="Email">';
+                                    }
+                                     ?>
+                                    <!-- <input class="au-input au-input--full" type="email" name="email" placeholder="Email"> -->
                                 </div>
                                 <div class="form-group">
                                     <span>Account_type:</span>&nbsp;

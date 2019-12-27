@@ -2,7 +2,7 @@
 session_start();
 require 'dbh.inc.php';
 // INSERT INTO publications(name, description, date, user_id) VALUES ([value-2],[value-3],[value-4],[value-5]);
-if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] = 'HOD' || $_SESSION['type' == 'FACULTY'])) {
+if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['active'] == 1){// && ($_SESSION['type'] = 'HOD' || $_SESSION['type' == 'FACULTY'])) {
 
 
 
@@ -31,7 +31,7 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] = 'H
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 } else {
-    header('Location: ../login.php');
+    header('Location: ../login.php?error=logout');
     exit();
 }
     

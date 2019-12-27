@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_GET['del']) && isset($_SESSION['id'])) {
+if (isset($_GET['del']) && isset($_SESSION['id']) && $_SESSION['active'] == 1) {
     require 'dbh.inc.php';
 
     $id = $_GET['del'];
@@ -129,5 +129,6 @@ else if (isset($_GET['commity_del']) && isset($_SESSION['id'])) {
     mysqli_close($conn);
     exit();
 } else {
-    header('Location: ../index.php');
+    header('Location: ../login.php?error=logout');
+    exit();
 }

@@ -41,7 +41,11 @@ if (!isset($_SESSION['id'])) {
                     <div class="container-fluid">
 
                         // code
-
+                            <!-- START COPYRIGHT -->
+                            <?php
+                            include './templates/copyright.php'
+                            ?>
+                            <!-- END COPYRIGHT -->
                     </div>
                 </div>
                 <!-- END MAIN CONTENT-->

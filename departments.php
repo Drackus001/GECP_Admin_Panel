@@ -109,7 +109,11 @@ if (!isset($_SESSION['id'])) {
                                 <!-- END DATA TABLE -->
                             </div>
                         </div>
-                        // code -->
+                           <!-- START COPYRIGHT -->
+                           <?php
+                            include './templates/copyright.php'
+                            ?>
+                            <!-- END COPYRIGHT -->
 
                     </div>
                 </div>

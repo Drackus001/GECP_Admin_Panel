@@ -40,7 +40,7 @@ if (isset($_POST['login-submit'])) {
                 exit();
             }
         } else {
-            header('Location: ../login.php?error=not_active');
+            header('Location: ../login.php?error=not_active_or_invalid');
             exit();
         }
     }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_GET['act']) && isset($_SESSION['id'])) {
+if (isset($_GET['act']) && isset($_SESSION['id']) && $_SESSION['active'] == 1) {
     require 'dbh.inc.php';
 
     $id = $_GET['act'];
@@ -16,5 +16,6 @@ if (isset($_GET['act']) && isset($_SESSION['id'])) {
     header('Location: ../active_req.php?userActivated');
     mysqli_close($conn);
 } else {
-    header('Location: ../index.php?error');
+    header('Location: ../login.php?error=logout');
+    exit();
 }

@@ -127,6 +127,11 @@ if (!isset($_SESSION['id'])) {
 
                     </div>
                 </div>
+                <!-- START COPYRIGHT -->
+                   <?php
+                    include './templates/copyright.php'
+                    ?>
+                <!-- END COPYRIGHT -->
 
 
             </div>

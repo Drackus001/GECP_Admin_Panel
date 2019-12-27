@@ -3,7 +3,7 @@ session_start();
 
 // UPDATE departments SET about=[value-3],vision=[value-4],mission=[value-5],peo=[value-6],pso=[value-7] WHERE id='$id';
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) && $_SESSION['active'] == 1) {
     require 'dbh.inc.php';
 
     // $username = $_POST['username'];
@@ -50,5 +50,6 @@ if (isset($_SESSION['id'])) {
     // header('Location: ../profile.php?profileUpdated');
     // mysqli_close($conn);
 } else {
-    header('Location: ../departments.php?error');
+    header('Location: ../login.php?error=logout');
+    exit();
 }

@@ -1,8 +1,9 @@
 <?php
-session_start();
-if(!isset($_SESSION['id'])){
+
+
     include_once './templates/head.php';
-    ?>
+    if(!isset($_SESSION['id'])){
+?>
     
     <!-- <link rel="stylesheet" href="./css/validation_styles.css"> -->
     </head>
@@ -11,7 +12,28 @@ if(!isset($_SESSION['id'])){
         <div class="page-wrapper">
             <div class="page-content--bge5">
                 <div class="container">
+                
+                            
+
                     <div class="login-wrap">
+                <!-- Message alert -->
+                <?php
+                                    if(isset($_GET['signup'])){
+                                        $msg = $_GET['signup'];
+                                        if($msg == 'success'){
+                                            $success = 'User Registration Request is successfully send to admin and hod.';
+
+                                                                                
+                                    
+                                  echo '  <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+								    '.$success.'
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								    <span aria-hidden="true">&times;</span>
+								</button>
+                            </div>';
+                                        }
+                                    }
+                                    ?>    
                         <div class="login-content">
                             <div class="login-logo">
                                 <a href="#">
@@ -22,6 +44,31 @@ if(!isset($_SESSION['id'])){
                             <div class=" login-form">
                                 <form action="./includes/login.inc.php" method="post">
                                     <h2>LOGIN | PAGE</h2><br>
+                                    <?php
+                                if(isset($_GET['error'])){
+                                    $error_code = $_GET['error'];
+                                    if($error_code == 'wrong_pass'){
+                                        $error = 'Invalid password';
+                                    }elseif($error_code == 'not_active_or_invalid'){
+                                        $error = 'This user is not active or maybe Invalid username and password. (contact with administration)';
+                                    }elseif($error_code == 'sqlerror'){
+                                        $error = 'Database error.';
+                                    }
+                                    elseif($error_code == 'usertaken'){
+                                        $error = 'This username is already taken.';
+                                    }
+                                    elseif($error_code == 'logout'){
+                                        $error = 'oopss, you are not logged-in.';
+                                    }
+                                    echo '<div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                                        '.$error.'
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>';
+                                }
+                                ?>
+
                                     <div class="form-group">
                                         <label>Username</label>
                                         <input class="au-input au-input--full" type="text" name="username" placeholder="Your Username">
@@ -70,7 +117,8 @@ if(!isset($_SESSION['id'])){
     </html>
     <!-- end document-->
 <?php
-}else{
+}
+else{
 header('Location: index.php');
 }
 ?>

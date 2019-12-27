@@ -171,7 +171,12 @@ if (!isset($_SESSION['id']) && !isset($_GET['dept'])) {
                                 // code
                             }
                             ?>
-                        >
+                           <!-- START COPYRIGHT -->
+                           <?php
+                            include './templates/copyright.php'
+                            ?>
+                            <!-- END COPYRIGHT -->
+                        </div>
                     </div>
                     <!-- END MAIN CONTENT-->
                 </div>

@@ -3,7 +3,7 @@ session_start();
 include 'dbh.inc.php';
 // INSERT INTO `labs`(`id`, `name`, `description`, `os`, `ram`, `hdd`, `processor`, `photo_path`, `department_id`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9]);
 
-if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == 'ADMIN' || $_SESSION['type'] = 'HOD')) {
+if (isset($_POST['submit']) && isset($_SESSION['id']) && $_SESSION['active'] == 1 ){// && ($_SESSION['type'] == 'ADMIN' || $_SESSION['type'] = 'HOD')) {
     $name = $_POST['name'];
     $description = $_POST['description'];
     $os = $_POST['os'];
@@ -142,6 +142,6 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && ($_SESSION['type'] == '
         }
     }
 } else {
-    header('Location: ../index.php');
+    header('Location: ../login.php?error=logout');
     exit();
 }

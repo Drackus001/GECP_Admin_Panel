@@ -3,7 +3,7 @@ session_start();
 include 'dbh.inc.php';
 // UPDATE users SET profile_path=$fileDestination WHERE id=$_SESSION['id'];
 
-if (isset($_POST['submit']) && isset($_SESSION['id']) && isset($_POST['id'])) {
+if (isset($_POST['submit']) && isset($_SESSION['id']) && isset($_POST['id']) && $_SESSION['active'] == 1) {
     $id = $_POST['id'];
     $file = $_FILES['file'];
     print_r($file);
@@ -66,6 +66,6 @@ if (isset($_POST['submit']) && isset($_SESSION['id']) && isset($_POST['id'])) {
         echo 'you cannot upload file of this type.';
     }
 } else {
-    header('Location: ../departments.php');
+    header('Location: ../login.php?error=logout');
     exit();
 }
