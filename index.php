@@ -35,7 +35,18 @@ include './templates/head.php'
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div>
+                        
+                        <!-- Message alert -->
+                            <!-- <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
+								<span class="badge badge-pill badge-primary">Success</span>
+								    You successfully read this important alert.
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								    <span aria-hidden="true">&times;</span>
+								</button>
+						    </div> -->
+                            
                             <?php
+
                             if (!isset($_SESSION['username'])) {
                                 echo "<p>you're logged out</p>";
                             } else {
