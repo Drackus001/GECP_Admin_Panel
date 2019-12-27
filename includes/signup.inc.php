@@ -4,6 +4,9 @@ if (isset($_POST['signup-submit'])) {
 
     require 'dbh.inc.php';
 
+    // SQL Injection
+    // $username = mysqli_real_escape_string($conn, $_POST['username']);
+    
     $username = $_POST['username'];
     $email = $_POST['email'];
     $pass1 = $_POST['password'];
